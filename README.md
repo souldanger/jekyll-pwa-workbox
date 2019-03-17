@@ -1,8 +1,9 @@
 # Jekyll PWA Workbox Plugin
 
 
-This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile.
+This Jekyll plugin makes your PWA / Website available offline* and allows you to install on desktop or mobile.
 It uses Workbox service worker, generates and injects a precache list and takes care of the service worker registration process in a secure way.
+** * = not on iOS**
 
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 
@@ -15,9 +16,9 @@ It is pretty much the same, except for:
 Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/). If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
 
 **IMPORTANT** This plugin supports Workbox version 3.x.x.
-If you used `v1.x.x` before, a migration guide is [HERE](./MIGRATE.md).
-The API of Workbox V3 has changed a lot compared with V2, some more powerful functions added too.
-I really recommend applying an migration.
+If you used `v1.x.x` before, a migration guide is [here](./MIGRATE.md).
+The API of Workbox V3 has changed a lot compared to v2, some more powerful functions have been added too.
+Applying a migration is highly recommended.
 
 
 ## Installation
@@ -89,7 +90,7 @@ We handle precache and runtime cache with the help of Google Workbox in service 
 
 ### Start the Service Worker
 
-Add the following js snippet to an existing js file or create a separate js file with the following:
+Add the following js snippet to an existing js file:
 ```javascript
 window.onload = function () {
     var script = document.createElement('script');
@@ -101,7 +102,7 @@ window.onload = function () {
 };
 ```
 
-Here are also example files:
+OR use any of these files to stat the service worker registration:
 - [pwa-1.0.js](./pwa-1.0.js)
 - [pwa-1.0.min.js](./pwa-1.0.min.js)
 
@@ -109,11 +110,11 @@ Here are also example files:
 ### Write your own Service Worker
 
 Create a `service-worker.js` in the root path of your Jekyll project.
-You can change this source file's path with `sw_src_filepath` option.
+You can change the source file's path with `sw_src_filepath` option.
 
 Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-Here's an exmaple of `service-worker.js`:
+Here's an exmaple of [service-worker.js](./service-worker.js) or create one yourself:
 ```javascript
 // service-worker.js
 
@@ -159,7 +160,7 @@ This plugin won't generate a [manifest.json](https://developer.mozilla.org/en-US
 
 ### When my site updates...
 
-Since the service worker has precached our assets such as `index.html`, JS files and other static files, we should notify user when our site has something changed. When these updates happen, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page so that these updates can be applied. A normal solution is showing a toast with the following text: `This site has changed, please refresh current page manually.`.
+As the service worker has precached our assets such as `index.html`, JS files and other static files, we should notify user when our site has something changed. When these updates happen, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page so that these updates can be applied. A normal solution is showing a toast with the following text: `This site has changed, please refresh current page manually.`.
 
 This plugin will dispatch a custom event called `sw.update` when the service worker has finished the update work. So in your site, you can choose to listen this event and popup a toast to remind users refreshing current page.
 
