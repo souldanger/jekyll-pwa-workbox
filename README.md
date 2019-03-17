@@ -8,7 +8,7 @@ It is pretty much the same, except for:
 - the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
 - serves `sw-register.js` minified for better auditing results.
 
----
+--
 
 Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/). If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
 
