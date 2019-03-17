@@ -1,9 +1,11 @@
 # Jekyll PWA Workbox Plugin
 
 
-This Jekyll plugin generates a precache list and takes care of the Workbox register process in a secure way.
+This Jekyll plugin makes your PWA / Website available offline* and allows you to install on desktop or mobile.
+It uses Workbox service worker, generates and injects a precache list and takes care of the service worker registration process in a secure way.
 
-The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
+The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa){: _blank}.   
+
 It is pretty much the same, except for:
 - the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
 - serves `sw-register.js` minified for better auditing results.
@@ -167,7 +169,7 @@ Fork this repository, make your changes and then issue a pull request. If you fi
 
 # Copyright
 
-Copyright (c) 2019 souldanger.com
+Copyright &copy; 2019 Lavas Project / souldanger.com
 
 License: MIT
 
