@@ -4,7 +4,7 @@
 This Jekyll plugin makes your PWA / Website available offline* and allows you to install on desktop or mobile.
 It uses Workbox service worker, generates and injects a precache list and takes care of the service worker registration process in a secure way.
 
-The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa){: _blank}.   
+The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa){:target="_blank"}.   
 
 It is pretty much the same, except for:
 - the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
@@ -12,7 +12,7 @@ It is pretty much the same, except for:
 
 ---
 
-Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/). If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
+Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/){:target="_blank"}. If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
 
 **IMPORTANT** This plugin supports Workbox version 3.x.x.
 If you used `v1.x.x` before, a migration guide is [HERE](./MIGRATE.md).
@@ -80,9 +80,9 @@ Parameter                 | Description
 sw_src_filepath           | Filepath of the source service worker. Defaults to `service-worker.js`
 sw_dest_filename          | Filename of the destination service worker. Defaults to `service-worker.js`
 dest_js_directory         | Directory of JS in `_site`. During the build process, some JS like workbox.js will be copied to this directory so that service worker can import them in runtime.
-precache_glob_directory   | Directory of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
-precache_glob_patterns    | Patterns of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
-precache_glob_ignores     | Ignores of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
+precache_glob_directory   | Directory of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config){:target="_blank"}
+precache_glob_patterns    | Patterns of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config){:target="_blank"}
+precache_glob_ignores     | Ignores of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config){:target="_blank"}
 precache_recent_posts_num | Number of recent posts to precache.
 
 We handle precache and runtime cache with the help of Google Workbox in service worker.
@@ -111,7 +111,7 @@ Here are also example files:
 Create a `service-worker.js` in the root path of your Jekyll project.
 You can change this source file's path with `sw_src_filepath` option.
 
-Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
+Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/){:target="_blank"}.
 
 Here's an exmaple of `service-worker.js`:
 ```javascript
@@ -155,7 +155,7 @@ workbox.routing.registerRoute(
 
 ### Generate a manifest.json?
 
-This plugin won't generate a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest). If you want to support this PWA feature, just add one in your root directory and Jekyll will copy it to `_site`.
+This plugin won't generate a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest){:target="_blank"}. If you want to support this PWA feature, just add one in your root directory and Jekyll will copy it to `_site`.
 
 ### When my site updates...
 
