@@ -1,13 +1,14 @@
 # Jekyll PWA Workbox Plugin
 
 
-This Jekyll plugin generates a precache list with Workbox and takes care of the register process in a secure way.
+This Jekyll plugin generates a precache list and takes care of the Workbox register process in a secure way.
 
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 It is pretty much the same, except for:
-- the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline as in the original plugin.
-- serves sw-register.js minified for better auditing results.
+- the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
+- serves `sw-register.js` minified for better auditing results.
 
+---
 
 Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/). If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
 
@@ -84,6 +85,7 @@ precache_recent_posts_num | Number of recent posts to precache.
 
 We handle precache and runtime cache with the help of Google Workbox in service worker.
 
+### Start the Service Worker
 
 Add the following js snippet to an existing js file or create a separate js file and include it:
 ```
@@ -98,8 +100,8 @@ window.onload = function () {
 ```
 
 Here are also example files:
-- [pwa-1.0.js](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/pwa-1.0.js)
-- [pwa-1.0.min.js](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/pwa-1.0.min.js)
+- [pwa-1.0.js](./pwa-1.0.js)
+- [pwa-1.0.min.js](./pwa-1.0.min.js)
 
 
 ### Write your own Service Worker
@@ -109,7 +111,7 @@ You can change this source file's path with `sw_src_filepath` option.
 
 Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-Here's what the `service-worker.js` like in my site.
+Here's an exmaple of `service-worker.js`:
 ```javascript
 // service-worker.js
 
