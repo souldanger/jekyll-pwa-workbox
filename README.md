@@ -89,8 +89,8 @@ We handle precache and runtime cache with the help of Google Workbox in service 
 
 ### Start the Service Worker
 
-Add the following js snippet to an existing js file or create a separate js file and include it:
-```
+Add the following js snippet to an existing js file or create a separate js file with the following:
+```javascript
 window.onload = function () {
     var script = document.createElement('script');
     var firstScript = document.getElementsByTagName('script')[0];
