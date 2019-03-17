@@ -1,1 +1,172 @@
-# jekyll-pwa-workbox
+# Jekyll PWA Workbox Plugin
+
+
+This Jekyll plugin generates a precache list with Workbox and takes care of the register process in a secure way.
+
+The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
+It is pretty much the same, except for:
+- the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline as in the original plugin.
+- serves sw-register.js minified for better auditing results.
+
+
+Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/). If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
+
+**IMPORTANT** This plugin supports Workbox version 3.x.x.
+If you used `v1.x.x` before, a migration guide is [HERE](./MIGRATE.md).
+The API of Workbox V3 has changed a lot compared with V2, some more powerful functions added too.
+I really recommend applying an migration.
+
+
+## Installation
+
+This plugin is available as a [RubyGem][ruby-gem].
+
+### Option #1
+
+Add `gem 'jekyll-pwa-workbox'` to the `jekyll_plugin` group in your `Gemfile`:
+
+```ruby
+source 'https://rubygems.org'
+
+gem 'jekyll'
+
+group :jekyll_plugins do
+  gem 'jekyll-pwa-workbox'
+end
+```
+
+Then run `bundle` to install the gem.
+
+### Option #2
+
+Alternatively, you can also manually install the gem using the following command:
+
+```
+$ gem install jekyll-pwa-workbox
+```
+
+After the plugin has been installed successfully, add the following lines to your `_config.yml` in order to tell Jekyll to use the plugin:
+
+```
+plugins:
+- jekyll-pwa-workbox
+```
+
+## Getting Started
+
+### Configuration
+
+Add the following configuration block to Jekyll's `_config.yml`:
+```yaml
+pwa:
+  sw_src_filepath: service-worker.js # Optional
+  sw_dest_filename: service-worker.js # Optional
+  dest_js_directory: assets/js # Required
+  precache_recent_posts_num: 5 # Optional
+  precache_glob_directory: / # Optional
+  precache_glob_patterns: # Optional
+    - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
+    - index.html
+  precache_glob_ignores: # Optional
+    - sw-register.js
+    - "fonts/**/*"
+```
+
+Parameter                 | Description
+----------                | ------------
+sw_src_filepath           | Filepath of the source service worker. Defaults to `service-worker.js`
+sw_dest_filename          | Filename of the destination service worker. Defaults to `service-worker.js`
+dest_js_directory         | Directory of JS in `_site`. During the build process, some JS like workbox.js will be copied to this directory so that service worker can import them in runtime.
+precache_glob_directory   | Directory of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
+precache_glob_patterns    | Patterns of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
+precache_glob_ignores     | Ignores of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
+precache_recent_posts_num | Number of recent posts to precache.
+
+We handle precache and runtime cache with the help of Google Workbox in service worker.
+
+
+Add the following js snippet to an existing js file or create a separate js file and include it:
+```
+window.onload = function () {
+    var script = document.createElement('script');
+    var firstScript = document.getElementsByTagName('script')[0];
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '{{'sw-register.js'|relative_url}}?v=' + Date.now();
+    firstScript.parentNode.insertBefore(script, firstScript);
+};
+```
+
+Here are also example files:
+- [pwa-1.0.js](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/pwa-1.0.js)
+- [pwa-1.0.min.js](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/pwa-1.0.min.js)
+
+
+### Write your own Service Worker
+
+Create a `service-worker.js` in the root path of your Jekyll project.
+You can change this source file's path with `sw_src_filepath` option.
+
+Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
+
+Here's what the `service-worker.js` like in my site.
+```javascript
+// service-worker.js
+
+// set names for both precache & runtime cache
+workbox.core.setCacheNameDetails({
+    prefix: 'my-blog',
+    suffix: 'v1',
+    precache: 'precache',
+    runtime: 'runtime-cache'
+});
+
+// let Service Worker take control of pages ASAP
+workbox.skipWaiting();
+workbox.clientsClaim();
+
+// let Workbox handle our precache list
+workbox.precaching.precacheAndRoute(self.__precacheManifest);
+
+// use `networkFirst` strategy for `*.html`, like all my posts
+workbox.routing.registerRoute(
+    /\.html$/,
+    workbox.strategies.networkFirst()
+);
+
+// use `cacheFirst` strategy for images
+workbox.routing.registerRoute(
+    /assets\/(img|icons)/,
+    workbox.strategies.cacheFirst()
+);
+
+// third party files
+workbox.routing.registerRoute(
+    /^https?:\/\/cdn.staticfile.org/,
+    workbox.strategies.staleWhileRevalidate()
+);
+```
+
+## Note
+
+### Generate a manifest.json?
+
+This plugin won't generate a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest). If you want to support this PWA feature, just add one in your root directory and Jekyll will copy it to `_site`.
+
+### When my site updates...
+
+Since the service worker has precached our assets such as `index.html`, JS files and other static files, we should notify user when our site has something changed. When these updates happen, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page so that these updates can be applied. A normal solution is showing a toast with the following text: `This site has changed, please refresh current page manually.`.
+
+This plugin will dispatch a custom event called `sw.update` when the service worker has finished the update work. So in your site, you can choose to listen this event and popup a toast to remind users refreshing current page.
+
+# Contribute
+
+Fork this repository, make your changes and then issue a pull request. If you find bugs or have new ideas that you do not want to implement yourself, file a bug report.
+
+# Copyright
+
+Copyright (c) 2019 souldanger.com
+
+License: MIT
+
+[ruby-gem]: https://rubygems.org/gems/jekyll-pwa-workbox
