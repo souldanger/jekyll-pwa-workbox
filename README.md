@@ -1,13 +1,13 @@
-# Jekyll PWA Workbox Plugin
+# Jekyll PWA Workbox Plugin [![Gem Version](https://badge.fury.io/rb/jekyll-pwa-workbox.svg)](https://badge.fury.io/rb/jekyll-pwa-workbox)
 
 
 This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile*.
 It uses a Workbox service worker, generates and injects a precache list into it and takes care of the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
-The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
+The plugin was originally developed by Pan Yuqi, sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 It is pretty much the same, except for:
-- the starter process is done from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
+- the starter process is initiated from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
 - serves `sw-register.js` minified for better auditing results.
 
 ---
@@ -101,7 +101,7 @@ window.onload = function () {
 };
 ```
 
-OR use any of these files to stat the service worker registration:
+OR use any of these files to start the service worker registration:
 - [pwa-1.0.js](./pwa-1.0.js)
 - [pwa-1.0.min.js](./pwa-1.0.min.js)
 
@@ -169,7 +169,7 @@ Fork this repository, make your changes and then issue a pull request. If you fi
 
 # Copyright
 
-Copyright &copy; 2019 Lavas Project / souldanger.com
+Copyright &copy; 2019 Pan Yuqi, sekiyika, souldanger
 
 License: MIT
 
