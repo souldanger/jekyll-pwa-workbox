@@ -12,12 +12,12 @@ It is pretty much the same, except for:
 
 ---
 
-Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/).   
+Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
 If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. 
 As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
 Therefore we are integrating this function in the Jekyll build process.
  
-**IMPORTANT** This plugin supports Workbox version 3.x.x. If you are still using `v1.x.x`, you will have to migrate.   
+**IMPORTANT** This plugin supports Workbox version 3.x.x. If you are still using `v1.x.x`, you will have to migrate. 
 A migration guide is available [here](./MIGRATE.md).   
 The API of Workbox V3 has changed a lot compared to v2, some more powerful functions have been added too.
 
@@ -44,13 +44,13 @@ Then run `bundle` to install the gem.
 
 ### Option #2
 
-Alternatively, you can also manually install the gem using the following command:
+Alternatively, you can also install the gem manually, using the following command:
 
 ```
 $ gem install jekyll-pwa-workbox
 ```
 
-After the plugin has been installed successfully, add the following lines to your `_config.yml` in order to tell Jekyll to use the plugin:
+Once the gem has been installed successfully, add the following to your `_config.yml` in order to tell Jekyll to use the plugin:
 
 ```
 plugins:
