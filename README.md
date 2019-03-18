@@ -1,23 +1,25 @@
 # Jekyll PWA Workbox Plugin [![Gem Version](https://badge.fury.io/rb/jekyll-pwa-workbox.svg)](https://badge.fury.io/rb/jekyll-pwa-workbox)
 
 
-This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile*.
+This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile*.   
 It uses a Workbox service worker, generates and injects a precache list into it and takes care of the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
-The plugin was originally developed by Pan Yuqi, sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
+The plugin was originally developed by Pan Yuqi and sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 It is pretty much the same, except for:
 - the starter process is initiated from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
 - serves `sw-register.js` minified for better auditing results.
 
 ---
 
-Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/). If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. But in my blog, I don't want to use even npm, and I want to precache recent 10 posts so that they are offline available to visitors even though these posts were never opened by visitors before. That's why I try to integrate this function in Jekyll build process.
-
-**IMPORTANT** This plugin supports Workbox version 3.x.x.
-If you used `v1.x.x` before, a migration guide is [here](./MIGRATE.md).
+Google Workbox has already developed a series of [tools](https://developers.google.com/web/tools/workbox/).   
+If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. 
+As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
+Therefore we are integrating this function in the Jekyll build process.
+ 
+**IMPORTANT** This plugin supports Workbox version 3.x.x. If you are still using `v1.x.x`, you will have to migrate.   
+A migration guide is available [here](./MIGRATE.md).   
 The API of Workbox V3 has changed a lot compared to v2, some more powerful functions have been added too.
-Applying a migration is highly recommended.
 
 
 ## Installation
