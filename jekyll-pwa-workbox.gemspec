@@ -16,6 +16,5 @@ Gem::Specification.new do |s|
     "documentation_uri" => "https://github.com/souldanger/jekyll-pwa-workbox",
     "homepage_uri"      => "https://github.com/souldanger/jekyll-pwa-workbox",
     "source_code_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox",
-    "wiki_uri"          => "https://github.com/souldanger/jekyll-pwa-workbox"
   }
 end
