@@ -94,14 +94,13 @@ We handle precache and runtime cache with the help of Google Workbox in service 
 
 Add the following two blocks to an existing JS file:    
 
-(must be on top of JS file, so that the script src can be generated)
 ```javascript
 ---
 layout: null
 ---
 ```
+(must be on top of JS file, so that the script src can be generated)
 
-(can live anywhere in your JS file)
 ```javascript
 window.onload = function () {
     var script = document.createElement('script');
