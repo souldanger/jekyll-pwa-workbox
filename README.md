@@ -94,7 +94,7 @@ We handle precache and runtime cache with the help of Google Workbox in service 
 
 Add the following two blocks to an existing JS file:    
 
-*this must be on the top of JS file, before any other code, so that the script-src can be generated*
+*this must be at the start of your JS file, before any other code, so that the script-src can be generated*
 ```
 ---
 layout: null
