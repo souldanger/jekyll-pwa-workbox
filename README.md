@@ -99,8 +99,8 @@ Add the following two blocks to an existing JS file:
 layout: null
 ---
 ```
-(must be on top of JS file, so that the script src can be generated)
-
+(must be on top of JS file, so that the script src can be generated)   
+    
 ```javascript
 window.onload = function () {
     var script = document.createElement('script');
