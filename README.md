@@ -8,7 +8,7 @@ _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by Pan Yuqi and sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 It is pretty much the same, except for:
-- the starter process is initiated from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
+- the starter process is initiated from a js file to allow for ```script-src 'self';``` in your CSP, rather than ```unsafe-inline```.
 - serves `sw-register.js` minified for better auditing results.
 
 ---
