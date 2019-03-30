@@ -167,7 +167,7 @@ workbox.routing.registerRoute(
 // use `StaleWhileRevalidate` third party files
 workbox.routing.registerRoute(
     /^https?:\/\/cdn.staticfile.org/,
-		new workbox.strategies.StaleWhileRevalidate()
+    new workbox.strategies.StaleWhileRevalidate()
 );
 ```
 
