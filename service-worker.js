@@ -19,6 +19,12 @@ workbox.routing.registerRoute(
     new workbox.strategies.NetworkFirst()
 );
 
+// use `networkFirst` strategy for css and js
+workbox.routing.registerRoute(
+    /\.(?:js|css)$/,
+    new workbox.strategies.NetworkFirst()
+);
+
 // use `cacheFirst` strategy for images
 workbox.routing.registerRoute(
     /assets\/(img|icons)/,
