@@ -1,4 +1,3 @@
-[![Gem Version](https://badge.fury.io/rb/jekyll-pwa-workbox.svg)](https://badge.fury.io/rb/jekyll-pwa-workbox)
 # Jekyll PWA Workbox Plugin
 
 
