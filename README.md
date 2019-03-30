@@ -13,7 +13,7 @@ It is pretty much the same, except for:
 
 ---
 
-**PLEASE NOTE** we're now using **Workbox version 4** and therefore you'll need to update your ``service-worker.js` as below.
+**PLEASE NOTE** we're now using **Workbox version 4** and therefore you'll need to update your `service-worker.js` as below.
 
 Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
 If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. 
