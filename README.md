@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/jekyll-pwa-workbox.svg)](https://badge.fury.io/rb/jekyll-pwa-workbox)
 # Jekyll PWA Workbox Plugin
 
 
@@ -146,19 +147,25 @@ workbox.core.clientsClaim();
 // let Workbox handle our precache list
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// use `networkFirst` strategy for `*.html`, like all my posts
+// use `NetworkFirst` strategy for html
 workbox.routing.registerRoute(
     /\.html$/,
     new workbox.strategies.NetworkFirst()
 );
 
-// use `cacheFirst` strategy for images
+// use `NetworkFirst` strategy for css and js
+workbox.routing.registerRoute(
+    /\.(?:js|css)$/,
+    new workbox.strategies.NetworkFirst()
+);
+
+// use `CacheFirst` strategy for images
 workbox.routing.registerRoute(
     /assets\/(img|icons)/,
     new workbox.strategies.CacheFirst()
 );
 
-// third party files
+// use `StaleWhileRevalidate` third party files
 workbox.routing.registerRoute(
     /^https?:\/\/cdn.staticfile.org/,
 	new workbox.strategies.StaleWhileRevalidate()
