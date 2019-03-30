@@ -13,14 +13,16 @@ It is pretty much the same, except for:
 
 ---
 
+**PLEASE NOTE** we're now using **Workbox version 4** and therefore you'll need to update your ``service-worker.js` as below.
+
 Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
 If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. 
 As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
 Therefore we are integrating this function in the Jekyll build process.
  
-**IMPORTANT** This plugin supports Workbox version 3.x.x. If you are still using `v1.x.x`, you will have to migrate. 
+**IMPORTANT** This plugin supports **Workbox version 4.x.x**. If you are still using v1.x.x, you will have to migrate. 
 A migration guide is available [here](./MIGRATE.md).   
-The API of Workbox V3 has changed a lot compared to v2, some more powerful functions have been added too.
+The API of Workbox v4 has changed a lot compared to previous releases, some more powerful functions have been added too.
 
 
 ## Installation
@@ -102,7 +104,7 @@ layout: null
 ```
 
 
-*this snippet can live anywhere in your JS file*
+*this snippet can live anywhere in your JS file (i.e. app.js)*
 ```javascript
 window.onload = function () {
     var script = document.createElement('script');
@@ -126,7 +128,7 @@ You can change the source file's path with `sw_src_filepath` option.
 
 Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-Here's an exmaple of [service-worker.js](./service-worker.js) or create one yourself:
+Here's an exmaple of a **NEW** [service-worker.js](./service-worker.js) for **Workbox v4.x.x** or create one yourself:
 ```javascript
 // service-worker.js
 
@@ -139,8 +141,8 @@ workbox.core.setCacheNameDetails({
 });
 
 // let Service Worker take control of pages ASAP
-workbox.skipWaiting();
-workbox.clientsClaim();
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 // let Workbox handle our precache list
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
@@ -148,19 +150,19 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest);
 // use `networkFirst` strategy for `*.html`, like all my posts
 workbox.routing.registerRoute(
     /\.html$/,
-    workbox.strategies.networkFirst()
+    new workbox.strategies.NetworkFirst()
 );
 
 // use `cacheFirst` strategy for images
 workbox.routing.registerRoute(
     /assets\/(img|icons)/,
-    workbox.strategies.cacheFirst()
+    new workbox.strategies.CacheFirst()
 );
 
 // third party files
 workbox.routing.registerRoute(
     /^https?:\/\/cdn.staticfile.org/,
-    workbox.strategies.staleWhileRevalidate()
+	new workbox.strategies.StaleWhileRevalidate()
 );
 ```
 
@@ -182,7 +184,7 @@ Fork this repository, make your changes and then issue a pull request. If you fi
 
 # Copyright
 
-Copyright &copy; 2019 Pan Yuqi, sekiyika, souldanger
+Copyright &copy; 2019 souldanger, Pan Yuqi, sekiyika
 
 License: MIT
 
