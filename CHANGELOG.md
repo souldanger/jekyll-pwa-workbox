@@ -8,7 +8,7 @@ fail - please accept our apologies for any inconvenience caused!!!
 
 # 0.0.3
 
-upgrade library to Workbox version 4.1.1
+upgrade library to Workbox version 4.1.1    
 updated service-worker.js
 
 # 0.0.4
