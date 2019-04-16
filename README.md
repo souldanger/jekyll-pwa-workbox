@@ -19,7 +19,7 @@ If you use Webpack or Gulp as your build tool, you can easily generate a service
 As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
 Therefore we are integrating this function in the Jekyll build process.
  
-**IMPORTANT** This plugin supports **Workbox version 4.2.0**. If you are still using v1.x.x, you will have to migrate. 
+**IMPORTANT** This plugin supports **Workbox version 4.3.0**. If you are still using v1.x.x, you will have to migrate. 
 A migration guide is available [here](./MIGRATE.md).   
 The API of Workbox v4 has changed a lot compared to previous releases, some more powerful functions have been added too.
 
