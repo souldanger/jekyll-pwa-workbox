@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/jekyll-pwa-workbox.svg)](https://badge.fury.io/rb/jekyll-pwa-workbox)
-![](https://ruby-gem-downloads-badge.herokuapp.com/jekyll-pwa-workbox)
+![](https://ruby-gem-downloads-badge.herokuapp.com/jekyll-pwa-workbox?type=total)
 # Jekyll PWA Workbox Plugin
 
 This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile*.   
