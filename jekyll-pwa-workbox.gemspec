@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-pwa-workbox'
-  s.version     = '0.0.5'
-  s.date        = '2019-04-16'
+  s.version     = '0.0.6'
+  s.date        = '2019-04-XX'
   s.summary     = "PWA Workbox Service Worker for Jekyll."
   s.description = "This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile.   
 					It uses a Workbox v4 service worker, generates and injects a precache list into it and takes care of the registration process in a secure way."
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox/issues",
-    "changelog_uri"     => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/CHANGELOG.md",
+    "changelog_uri"     => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/changelog.md",
     "documentation_uri" => "https://github.com/souldanger/jekyll-pwa-workbox",
     "homepage_uri"      => "https://github.com/souldanger/jekyll-pwa-workbox",
     "source_code_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox",
