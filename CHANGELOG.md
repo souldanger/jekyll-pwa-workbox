@@ -21,4 +21,4 @@ upgrade library to Workbox version 4.3.0
 
 # 0.0.6
 
-upgrade library to Workbox version 4.X.X
+upgrade library to Workbox version 4.3.1
