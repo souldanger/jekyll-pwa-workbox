@@ -1,5 +1,5 @@
 class SWHelper
-    WORKBOX_VERSION = 'v4.3.0'
+    WORKBOX_VERSION = 'v4.3.1'
     def initialize(site, config)
         @site = site
         @config = config
@@ -13,7 +13,7 @@ class SWHelper
         # add build version in url params
         sw_register_file.puts(
         <<-SCRIPT
-		"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var t=e.installing;t.onstatechange=function(){switch(t.state){case"installed":if(navigator.serviceWorker.controller){var e=document.createEvent("Event");e.initEvent("sw.update",!0,!0),window.dispatchEvent(e)}}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
+"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var t=e.installing;t.onstatechange=function(){switch(t.state){case"installed":if(navigator.serviceWorker.controller){var e=document.createEvent("Event");e.initEvent("sw.update",!0,!0),window.dispatchEvent(e)}}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
         SCRIPT
         )
         sw_register_file.close
@@ -94,18 +94,18 @@ class SWHelper
         sw_src_file_str = File.read(@site.in_source_dir(@sw_src_filepath))
         workbox_dir = File.join(@site.baseurl.to_s, dest_js_directory, "workbox-#{SWHelper::WORKBOX_VERSION}")
         import_scripts_str = 
-        <<-SCRIPT
-            importScripts("#{workbox_dir}/workbox-sw.js");
-            workbox.setConfig({modulePathPrefix: "#{workbox_dir}"});
-        SCRIPT
-
+<<-SCRIPT
+importScripts("#{workbox_dir}/workbox-sw.js");
+workbox.setConfig({modulePathPrefix: "#{workbox_dir}"});
+SCRIPT
         sw_dest_file = File.new(@site.in_dest_dir(@sw_filename), 'w')
         sw_dest_file.puts(
-        <<-SCRIPT
-            #{import_scripts_str}
-            self.__precacheManifest = [#{precache_list_str}];
-            #{sw_src_file_str}
-        SCRIPT
+<<-SCRIPT
+#{import_scripts_str}
+self.__precacheManifest = [#{precache_list_str}];
+
+#{sw_src_file_str}
+SCRIPT
         )
         sw_dest_file.close
     end
