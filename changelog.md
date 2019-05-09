@@ -21,6 +21,8 @@ updated service-worker.js
 
 upgrade library to Workbox version 4.2.0
 
+---
+
 # 0.0.5
 
 upgrade library to Workbox version 4.3.0
