@@ -32,3 +32,4 @@ upgrade library to Workbox version 4.3.0 - see fixes & updates [here](https://gi
 # 0.0.6
 
 upgrade library to Workbox version 4.3.1 - see fixes & updates [here](https://github.com/GoogleChrome/workbox/releases/tag/v4.3.1) 
+
