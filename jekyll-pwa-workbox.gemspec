@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox/issues",
     "changelog_uri"     => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/CHANGELOG.md",
-    "documentation_uri" => "https://github.com/souldanger/jekyll-pwa-workbox",
+    "documentation_uri" => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/README.md",
     "homepage_uri"      => "https://github.com/souldanger/jekyll-pwa-workbox",
-    "source_code_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox",
+    "source_code_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox/releases",
   }
 end
