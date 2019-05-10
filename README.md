@@ -4,7 +4,7 @@
 # Jekyll PWA Workbox Plugin
 
 This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile*.   
-It uses a Workbox service worker, generates and injects a precache list into it and takes care of the registration process in a secure way.   
+It uses a Workbox service worker, generates and injects a precache list and takes care of the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by Pan Yuqi and sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
@@ -14,16 +14,13 @@ It is pretty much the same, except for:
 
 ---
 
-**PLEASE NOTE** we're now using **Workbox version 4** and therefore you'll need to update your `service-worker.js` as below.
+This plugin supports **Workbox version 4.X.X**.
 
 Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
-If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. 
+You can easily generate a service worker with Webpack or Gulp as your build tool. 
+
 As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
-Therefore we are integrating this function in the Jekyll build process.
- 
-**IMPORTANT** This plugin supports **Workbox version 4.X.X**. If you are still using v1.x.x, you will have to migrate. 
-A migration guide is available [here](./MIGRATE.md).   
-The API of Workbox v4 has changed a lot compared to previous releases, some more powerful functions have been added too.
+Therefore we are integrating this function in the Jekyll build process.    
 
 
 ## Installation
@@ -128,7 +125,7 @@ You can change the source file's path with `sw_src_filepath` option.
 
 Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-Here's an exmaple of a **NEW** [service-worker.js](./service-worker.js) for **Workbox v4.x.x** or create one yourself:
+Here's an exmaple of [service-worker.js](./service-worker.js) for **Workbox v4.x** or create one yourself:
 ```javascript
 // service-worker.js
 
