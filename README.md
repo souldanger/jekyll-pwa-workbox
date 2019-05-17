@@ -195,8 +195,8 @@ License: [MIT](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/LICE
 
 #### Privacy & Security
 
-We recommend [Iridium Browser - A browser securing your privacy. That's it!](https://iridiumbrowser.de "Iridium Browser website & download")
+We recommend [Iridium Browser - A browser securing your privacy. That's it!](https://iridiumbrowser.de "Iridium Browser - website & download")
 
-[![Iridium Browser](https://github.com/iridium-browser/artwork/blob/master/product-logos_RGB/iridium-logo_5.png "Iridium Browser")](https://iridiumbrowser.de "Iridium Browser website & download")
+[![Iridium Browser](https://github.com/iridium-browser/artwork/blob/master/product-logos_RGB/iridium-logo_3.png "Iridium Browser")](https://iridiumbrowser.de "Iridium Browser - website & download")
 
 [ruby-gem]: https://rubygems.org/gems/jekyll-pwa-workbox
