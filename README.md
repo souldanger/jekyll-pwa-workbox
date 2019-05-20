@@ -14,7 +14,9 @@ It is pretty much the same, except for:
 
 ---
 
-This plugin supports **Workbox version 4.X.X**.
+This plugin supports **Workbox version 4.X.X * **.
+
+_* in case you are using a previous Workbox version (3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._
 
 Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
 You can easily generate a service worker with Webpack or Gulp as your build tool. 
@@ -187,16 +189,8 @@ Fork this repository, make your changes and then issue a pull request. If you fi
 
 # Copyright
 
-Copyright &copy; 2019 souldanger, Lavas Project
+Copyright &copy; 2019 souldanger, Pan Yuqi, Xing Peng
 
 License: [MIT](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/LICENSE)
-
----
-
-## Privacy & Security recommendation
-
-We recommend **Iridium Browser - A browser securing your privacy. That's it!**
-
-[![Iridium Browser](https://github.com/iridium-browser/artwork/blob/master/product-logos_RGB/iridium-logo_5.png)](https://iridiumbrowser.de "Iridium Browser - website & download")
 
 [ruby-gem]: https://rubygems.org/gems/jekyll-pwa-workbox
