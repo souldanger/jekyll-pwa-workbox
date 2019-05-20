@@ -14,7 +14,7 @@ It is pretty much the same, except for:
 
 ---
 
-This plugin supports **Workbox version 4.X.X * **.
+This plugin supports **Workbox version 4.X.X** *.
 
 _* in case you are using a previous Workbox version (3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._
 
