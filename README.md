@@ -3,8 +3,8 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-orange.svg)](http://opensource.org/licenses/MIT)
 # Jekyll PWA Workbox Plugin
 
-A Jekyll plugin that makes your PWA / Website available offline and allows you to install on desktop or mobile*.   
-It uses a Workbox service worker, generates and injects a precache list and takes care of the registration process in a secure way.   
+A Jekyll plugin that makes your PWA / Website available offline and allows you to install on desktop and mobile*.   
+It uses a Workbox service worker, generates and injects a precache list and handles the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
@@ -61,6 +61,12 @@ plugins:
 ```
 
 ## Getting Started
+
+To get the full features of your PWA / Website, a `manifest.json` is mandatory.   
+Please check the following about creating a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest) yourself.    
+Add it to your root directory and deploy it. Use `dev-tools` in Chrome or Firefox for debugging/testing.   
+Jekyll will copy it to `_site` when your PWA / Website builds.    
+
 
 ### Configuration
 
@@ -172,10 +178,6 @@ workbox.routing.registerRoute(
 ```
 
 ## Note
-
-### Generate a manifest.json?
-
-This plugin won't generate a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest). If you want to support this PWA feature, just add one in your root directory and Jekyll will copy it to `_site`.
 
 ### When my site updates...
 
