@@ -4,7 +4,7 @@
 # Jekyll PWA Workbox Plugin
 
 A Jekyll plugin that makes your PWA / Website available offline and allows you to install on desktop and mobile*.   
-It uses a Workbox service worker, generates and injects a precache list and handles the registration process in a secure way.   
+It generates and injects a precache list into a Workbox service worker and handles the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
