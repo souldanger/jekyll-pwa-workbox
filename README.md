@@ -97,35 +97,6 @@ precache_recent_posts_num | Number of recent posts to precache.
 We handle precache and runtime cache with the help of [Workbox][workbox] in service worker.
 
 
-## Register the Service Worker
-
-Add the following two blocks to an existing JS file:    
-
-*this must be at the start of your JS file, before any other code, so that the script-src can be generated*
-```
----
-layout: null
----
-```
-
-
-*this snippet can live anywhere in your JS file (i.e. app.js)*
-```javascript
-window.onload = function () {
-    var script = document.createElement('script');
-    var firstScript = document.getElementsByTagName('script')[0];
-    script.async = true;
-    script.src = '{{'sw-register.js'|relative_url}}?v=' + Date.now();
-    firstScript.parentNode.insertBefore(script, firstScript);
-};
-```
-
-OR use any of these files to start the service worker registration:
-- [pwa-1.0.js](./pwa-1.0.js)
-- [pwa-1.0.min.js](./pwa-1.0.min.js)
-
-
-
 ## Service Worker
 
 ### Write your own
@@ -180,6 +151,35 @@ workbox.routing.registerRoute(
 );
 ```
 
+
+## Register the Service Worker
+
+Add the following two blocks to an existing JS file:    
+
+*this must be at the start of your JS file, before any other code, so that the script-src can be generated*
+```
+---
+layout: null
+---
+```
+
+
+*this snippet can live anywhere in your JS file (i.e. app.js)*
+```javascript
+window.onload = function () {
+    var script = document.createElement('script');
+    var firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.src = '{{'sw-register.js'|relative_url}}?v=' + Date.now();
+    firstScript.parentNode.insertBefore(script, firstScript);
+};
+```
+
+OR use any of these files to start the service worker registration:
+- [pwa-1.0.js](./pwa-1.0.js)
+- [pwa-1.0.min.js](./pwa-1.0.min.js)
+
+---
 
 ## Note
 
