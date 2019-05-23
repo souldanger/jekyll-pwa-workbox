@@ -10,7 +10,7 @@ _* does not fully work with iOS/Safari to date_
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 It is pretty much the same, except for:
 - the starter process is initiated from a js file to allow for ```script-src 'self';``` in your CSP, rather than ```unsafe-inline```.
-- serves `sw-register.js` minified for better auditing results.
+- serves `sw-register.js` minified.
 
 ---
 
@@ -22,6 +22,7 @@ There are various tools available on the [Workbox tools](https://developers.goog
 
 We do not use `npm` and therefore integrate this function in the Jekyll build process to precache and make posts/pages available offline, even if they have never been visited before. 
 
+---
 
 ## Installation
 
