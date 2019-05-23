@@ -97,7 +97,7 @@ precache_recent_posts_num | Number of recent posts to precache.
 We handle precache and runtime cache with the help of [Workbox][workbox] in service worker.
 
 
-### Register the Service Worker
+## Register the Service Worker
 
 Add the following two blocks to an existing JS file:    
 
@@ -126,15 +126,15 @@ OR use any of these files to start the service worker registration:
 
 
 
-### Service Worker
+## Service Worker
 
-#### Write your own
+### Write your own
 
 Create a `service-worker.js` in the root path of your Jekyll project. The source file's path can be adjusted with the `sw_src_filepath` option.    
 
 You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/). 
 
-#### Basic Example
+### Basic Example
 
 Here is a basic example of [service-worker.js](./service-worker.js):
 ```javascript
