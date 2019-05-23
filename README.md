@@ -124,14 +124,15 @@ OR use any of these files to start the service worker registration:
 - [pwa-1.0.min.js](./pwa-1.0.min.js)
 
 
-### Write your own Service Worker
+### Service Worker #
+#### Write your own #
 
-Create a `service-worker.js` in the root path of your Jekyll project.
-You can change the source file's path with `sw_src_filepath` option.
-
+Create a `service-worker.js` in the root path of your Jekyll project. The source file's path can be adjusted with the `sw_src_filepath` option.
 You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/). 
 
-Here is an example of [service-worker.js](./service-worker.js) for **Workbox v4.x** or create one yourself:
+#### Basic Example #
+
+Here is a basic example of [service-worker.js](./service-worker.js):
 ```javascript
 // service-worker.js
 
