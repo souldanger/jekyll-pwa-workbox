@@ -181,6 +181,7 @@ OR use any of these files to start the service worker registration:
 
 
 DONE!
+
 Use dev-tools in Chrome or Firefox for debugging/testing.
 
 ---
@@ -190,7 +191,7 @@ Use dev-tools in Chrome or Firefox for debugging/testing.
 ### Updates / Manual Refresh
 
 When the PWA / Website updates, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page manually so that these updates can be applied. 
-This can be done by notifying users with a toast asking to refresh the page manually.
+This can be done by notifying the user with a toast such as `website updated - please refresh the page manually` or whatever else fits your needs.
 
 ### Workbox Plugins
 
