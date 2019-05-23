@@ -105,7 +105,7 @@ Create a `service-worker.js` in the root path of your Jekyll project. The source
 
 You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/). 
 
-### Basic Example
+### Basic example
 
 Here is a basic example of [service-worker.js](./service-worker.js):
 ```javascript
@@ -154,7 +154,7 @@ workbox.routing.registerRoute(
 
 ## Register the Service Worker
 
-Add the following two blocks to an existing JS file:    
+Add the following two blocks to an existing JS file (i.e. app.js):    
 
 *this must be at the start of your JS file, before any other code, so that the script-src can be generated*
 ```
@@ -179,6 +179,10 @@ OR use any of these files to start the service worker registration:
 - [pwa-1.0.js](./pwa-1.0.js)
 - [pwa-1.0.min.js](./pwa-1.0.min.js)
 
+
+DONE!
+Use dev-tools in Chrome or Firefox for debugging/testing.
+
 ---
 
 ## Note
@@ -191,7 +195,7 @@ This plugin will dispatch a custom event called `sw.update` when the service wor
 
 # Contribute
 
-Fork this repository, make your changes and then issue a pull request. If you find bugs or have new ideas that you do not want to implement yourself, file a bug report.
+Fork this repository, make your changes and then issue a pull request. If you find a bug or if you have new ideas, please file an issue in our [bug tracker](https://github.com/souldanger/jekyll-pwa-workbox/issues).
 
 # Copyright
 
