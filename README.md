@@ -16,7 +16,7 @@ It is pretty much the same, except for:
 
 This plugin supports **Workbox version 4.X.X** *.
 
-_* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3).    
+_* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._    
 
 There are various tools available on the [Workbox tools](https://developers.google.com/web/tools/workbox/) page, that let you easily generate a service worker with Webpack or Gulp as your build tool. 
 
