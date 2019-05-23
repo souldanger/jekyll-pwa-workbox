@@ -94,7 +94,7 @@ precache_glob_patterns    | Patterns of precache. [Workbox Config](https://devel
 precache_glob_ignores     | Ignores of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
 precache_recent_posts_num | Number of recent posts to precache.
 
-We handle precache and runtime cache with the help of Google Workbox in service worker.
+We handle precache and runtime cache with the help of [Workbox][workbox] in service worker.
 
 ### Start the Service Worker
 
