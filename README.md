@@ -14,7 +14,7 @@ It is pretty much the same, except for:
 
 ---
 
-This plugin supports **Workbox [version]** *.
+This plugin supports **Workbox version 4.X.X** *.
 
 _* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3).    
 
@@ -27,7 +27,7 @@ We do not use `npm` and therefore integrate this function in the Jekyll build pr
 
 This plugin is available as a [RubyGem][ruby-gem].
 
-### Option #1 - bundler
+### Option #1
 
 Add `gem 'jekyll-pwa-workbox'` to the `jekyll_plugin` group in your `Gemfile`:
 
@@ -43,7 +43,7 @@ end
 
 Then run `bundle` to install the gem.
 
-### Option #2 - manual
+### Option #2
 
 Alternatively, you can also install the gem manually, using the following command:
 
@@ -131,7 +131,7 @@ You can change the source file's path with `sw_src_filepath` option.
 
 Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-Here's an exmaple of [service-worker.js](./service-worker.js) for **Workbox [version]** or create one yourself:
+Here's an exmaple of [service-worker.js](./service-worker.js) for **Workbox v4.x** or create one yourself:
 ```javascript
 // service-worker.js
 
@@ -177,7 +177,7 @@ workbox.routing.registerRoute(
 
 ## Note
 
-### When my site updates...
+### When the site updates...
 
 As the service worker has precached our assets such as `index.html`, JS files and other static files, we should notify user when our site has something changed. When these updates happen, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page so that these updates can be applied. A normal solution is showing a toast with the following text: `This site has changed, please refresh current page manually.`.
 
@@ -195,4 +195,3 @@ License: [MIT](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/LICE
 
 [ruby-gem]: https://rubygems.org/gems/jekyll-pwa-workbox
 [workbox]: https://developers.google.com/web/tools/workbox/
-[version]: v4.X.X
