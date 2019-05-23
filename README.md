@@ -129,9 +129,9 @@ OR use any of these files to start the service worker registration:
 Create a `service-worker.js` in the root path of your Jekyll project.
 You can change the source file's path with `sw_src_filepath` option.
 
-Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
+You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/). 
 
-Here's an exmaple of [service-worker.js](./service-worker.js) for **Workbox v4.x** or create one yourself:
+Here is an example of [service-worker.js](./service-worker.js) for **Workbox v4.x** or create one yourself:
 ```javascript
 // service-worker.js
 
