@@ -185,19 +185,23 @@ Use dev-tools in Chrome or Firefox for debugging/testing.
 
 ---
 
-## Note
+## Notes
 
-### When the site updates...
+### Workbox Plugins
 
-As the service worker has precached our assets such as `index.html`, JS files and other static files, we should notify user when our site has something changed. When these updates happen, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page so that these updates can be applied. A normal solution is showing a toast with the following text: `This site has changed, please refresh current page manually.`.
+Workbox also comes with a set of plugins, details of how to use these can be found in the [Workbox Guide - Using Plugins](https://developers.google.com/web/tools/workbox/guides/using-plugins)
 
-This plugin will dispatch a custom event called `sw.update` when the service worker has finished the update work. So in your site, you can choose to listen this event and popup a toast to remind users refreshing current page.
+### Updates / Manual Refresh
 
-# Contribute
+When the PWA / Website updates, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page manually so that these updates can be applied. 
+
+This can be achieved by notifying the user with a toast, asking to refresh the page manually.
+
+## Contribute
 
 Fork this repository, make your changes and then issue a pull request. If you find a bug or if you have new ideas, please file an issue in our [bug tracker](https://github.com/souldanger/jekyll-pwa-workbox/issues).
 
-# Copyright
+## Copyright
 
 Copyright &copy; 2019 souldanger, Pan Yuqi, Xing Peng
 
