@@ -4,7 +4,7 @@
 # Jekyll PWA Workbox Plugin
 
 A Jekyll plugin that makes your PWA / Website available offline and allows you to install on desktop and mobile*.   
-It generates and injects a precache list into a Workbox service worker and handles the registration process in a secure way.   
+It generates and injects a precache list into a [Workbox][workbox] service worker and handles the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
@@ -14,22 +14,20 @@ It is pretty much the same, except for:
 
 ---
 
-This plugin supports **Workbox version 4.X.X** *.
+This plugin supports **Workbox [version]** *.
 
-_* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._
+_* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3).    
 
-Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
-You can easily generate a service worker with Webpack or Gulp as your build tool. 
+There are various tools available on the [Workbox tools](https://developers.google.com/web/tools/workbox/) page, that let you easily generate a service worker with Webpack or Gulp as your build tool. 
 
-As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
-Therefore we are integrating this function in the Jekyll build process.    
+We do not use `npm` and therefore integrate this function in the Jekyll build process to precache and make posts/pages available offline, even if they have never been visited before. 
 
 
 ## Installation
 
 This plugin is available as a [RubyGem][ruby-gem].
 
-### Option #1
+### Option #1 - bundler
 
 Add `gem 'jekyll-pwa-workbox'` to the `jekyll_plugin` group in your `Gemfile`:
 
@@ -45,7 +43,7 @@ end
 
 Then run `bundle` to install the gem.
 
-### Option #2
+### Option #2 - manual
 
 Alternatively, you can also install the gem manually, using the following command:
 
@@ -133,7 +131,7 @@ You can change the source file's path with `sw_src_filepath` option.
 
 Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-Here's an exmaple of [service-worker.js](./service-worker.js) for **Workbox v4.x** or create one yourself:
+Here's an exmaple of [service-worker.js](./service-worker.js) for **Workbox [version]** or create one yourself:
 ```javascript
 // service-worker.js
 
@@ -196,3 +194,5 @@ Copyright &copy; 2019 souldanger, Pan Yuqi, Xing Peng
 License: [MIT](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/LICENSE)
 
 [ruby-gem]: https://rubygems.org/gems/jekyll-pwa-workbox
+[workbox]: https://developers.google.com/web/tools/workbox/
+[version]: v4.X.X
