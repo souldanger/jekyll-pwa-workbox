@@ -187,15 +187,14 @@ Use dev-tools in Chrome or Firefox for debugging/testing.
 
 ## Notes
 
-### Workbox Plugins
-
-Workbox also comes with a set of plugins, details of how to use these can be found in the [Workbox Guide - Using Plugins](https://developers.google.com/web/tools/workbox/guides/using-plugins)
-
 ### Updates / Manual Refresh
 
 When the PWA / Website updates, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page manually so that these updates can be applied. 
+This can be done by notifying users with a toast asking to refresh the page manually.
 
-This can be achieved by notifying the user with a toast, asking to refresh the page manually.
+### Workbox Plugins
+
+Workbox also comes with a set of plugins, details of how to use these can be found in the [Workbox Guide - Using Plugins](https://developers.google.com/web/tools/workbox/guides/using-plugins)
 
 ## Contribute
 
