@@ -60,10 +60,9 @@ plugins:
 
 ## Getting Started
 
-To get the full features of your PWA / Website, a `manifest.json` is mandatory.   
+To get the full features of your PWA / Website, a `manifest.json` is required.   
 Please check the following about creating a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest) yourself.    
-Add it to your root directory and deploy it. Use `dev-tools` in Chrome or Firefox for debugging/testing.   
-Jekyll will copy it to `_site` when your PWA / Website builds.    
+Add it to the root directory of your Jekyll project and deploy it. Jekyll will copy it to `_site` when your PWA / Website builds.    
 
 
 ### Configuration
