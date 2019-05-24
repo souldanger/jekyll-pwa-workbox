@@ -23,6 +23,18 @@ We do not use `npm` and therefore integrate this function in the Jekyll build pr
 
 ---
 
+## Prerequisites
+
+### Web App Manifest
+
+A `manifest.json` is required to experience the full features of your PWA.
+
+In case you do not have one already, please read the following about creating and adding a [manifest.json](https://developers.google.com/web/fundamentals/web-app-manifest/).
+Add it to the root directory of your project and Jekyll will deploy it to `_site` when your PWA / Website builds.    
+
+Use `Chrome DevTools > Application` for debugging/testing.
+
+
 ## Installation
 
 This plugin is available as a [RubyGem][ruby-gem].
@@ -60,11 +72,6 @@ plugins:
 
 ## Getting Started
 
-To get the full features of your PWA / Website, a `manifest.json` is required.   
-Please check the following about creating a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest) yourself.    
-Add it to the root directory of your Jekyll project and deploy it. Jekyll will copy it to `_site` when your PWA / Website builds.    
-
-
 ### Configuration
 
 Add the following configuration block to Jekyll's `_config.yml`:
@@ -100,9 +107,9 @@ We handle precache and runtime cache with the help of [Workbox][workbox] in serv
 
 ### Write your own
 
-Create a `service-worker.js` in the root path of your Jekyll project. The source file's path can be adjusted with the `sw_src_filepath` option.    
+Create a `service-worker.js` in the root path of your Jekyll project. The source file's path can be adjusted with the `sw_src_filepath` option.
 
-You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/). 
+You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
 ### Basic example
 
@@ -181,7 +188,7 @@ OR use any of these files to start the service worker registration:
 
 DONE!
 
-Use dev-tools in Chrome or Firefox for debugging/testing.
+Use `Chrome DevTools`for debugging/testing.
 
 ---
 
