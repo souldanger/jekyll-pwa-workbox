@@ -3,7 +3,7 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-orange.svg)](http://opensource.org/licenses/MIT)
 # Jekyll PWA Workbox Plugin
 
-A Jekyll plugin that makes your PWA / Website available offline and allows you to install on desktop and mobile*.   
+A Jekyll plugin that makes your PWA / Website available offline and lets you install on desktop and mobile*.   
 It generates and injects a precache list into a [Workbox][workbox] service worker and handles the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
@@ -186,9 +186,7 @@ OR use any of these files to start the service worker registration:
 - [pwa-1.0.min.js](./pwa-1.0.min.js)
 
 
-DONE!
-
-Use `Chrome DevTools`for debugging/testing.
+DONE - use `Chrome DevTools`for debugging/testing.
 
 ---
 
