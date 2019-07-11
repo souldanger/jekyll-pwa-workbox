@@ -35,6 +35,6 @@ upgrade library to Workbox version 4.3.1 - see fixes & updates [here](https://gi
 
 ---
 
-# 0.0.7
+# 0.0.7_pre-release
 
-upgrade library to Workbox version 4.X.X
+upgrade library to Workbox version 5.0.0_pre-release

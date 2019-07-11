@@ -13,7 +13,7 @@ The plugin was originally developed by [Lavas Project](https://github.com/lavas-
 
 ---
 
-This plugin supports **Workbox version 4.X.X** *.
+This plugin supports the PRE-RELEASE of **Workbox version 5.0.0** *.
 
 _* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._    
 
@@ -49,7 +49,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 
 group :jekyll_plugins do
-  gem 'jekyll-pwa-workbox'
+  gem "jekyll-pwa-workbox", "~> 0.0.7.prerelease"
 end
 ```
 
@@ -207,7 +207,9 @@ Fork this repository, make your changes and then issue a pull request. If you fi
 
 ## Copyright
 
-Copyright &copy; 2019 souldanger, Pan Yuqi, Xing Peng
+Copyright &copy; 2019 souldanger
+
+Copyright &copy; 2017 Pan Yuqi, Xing Peng
 
 License: [MIT](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/LICENSE)
 
