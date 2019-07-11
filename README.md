@@ -60,7 +60,7 @@ Then run `bundle` to install the gem.
 Alternatively, you can also install the gem manually, using the following command:
 
 ```
-$ gem install jekyll-pwa-workbox
+$ gem install jekyll-pwa-workbox --pre
 ```
 
 Once the gem has been installed successfully, add the following to your `_config.yml` in order to tell Jekyll to use the plugin:
