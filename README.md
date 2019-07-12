@@ -8,7 +8,7 @@ _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by Pan Yuqi and sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
 It is pretty much the same, except for:
-- the starter process is initiated from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
+- the starter process is initiated from a js file to allow for ```script-src 'self';``` in your CSP, rather than unsafe-inline.
 - serves `sw-register.js` minified for better auditing results.
 
 ---
@@ -92,7 +92,17 @@ We handle precache and runtime cache with the help of Google Workbox in service 
 
 ### Start the Service Worker
 
-Add the following js snippet to an existing js file:
+Add the following two blocks to an existing JS file:    
+
+*this must be at the start of your JS file, before any other code, so that the script-src can be generated*
+```
+---
+layout: null
+---
+```
+
+
+*this snippet can live anywhere in your JS file*
 ```javascript
 window.onload = function () {
     var script = document.createElement('script');
