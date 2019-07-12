@@ -16,8 +16,6 @@ Gem::Specification.new do |s|
     "bug_tracker_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox/issues",
     "changelog_uri"     => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/CHANGELOG.md",
     "documentation_uri" => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/README.md",
-    "changelog_uri"     => "https://github.com/souldanger/jekyll-pwa-workbox/blob/master/changelog.md",
-    "documentation_uri" => "https://github.com/souldanger/jekyll-pwa-workbox",
     "homepage_uri"      => "https://github.com/souldanger/jekyll-pwa-workbox",
     "source_code_uri"   => "https://github.com/souldanger/jekyll-pwa-workbox/releases",
   }
