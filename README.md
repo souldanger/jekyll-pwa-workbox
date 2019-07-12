@@ -1,38 +1,26 @@
 [![Gem Version](https://badge.fury.io/rb/jekyll-pwa-workbox.svg)](https://badge.fury.io/rb/jekyll-pwa-workbox)
-![](https://ruby-gem-downloads-badge.herokuapp.com/jekyll-pwa-workbox?type=total)
-[![MIT license](http://img.shields.io/badge/license-MIT-orange.svg)](http://opensource.org/licenses/MIT)
 # Jekyll PWA Workbox Plugin
 
-A Jekyll plugin that makes your PWA / Website available offline and lets you install on desktop and mobile*.   
-It generates and injects a precache list into a [Workbox][workbox] service worker and handles the registration process in a secure way.   
+
+This Jekyll plugin makes your PWA / Website available offline and allows you to install on desktop or mobile*.   
+It uses a Workbox service worker, generates and injects a precache list into it and takes care of the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
 
-The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa). It is pretty much the same, except for:
-- the starter process is initiated from a js file to allow for ```script-src 'self';``` in your CSP, rather than ```unsafe-inline```.
-- serves `sw-register.js` minified.
+The plugin was originally developed by Pan Yuqi and sekiyika from [Lavas Project](https://github.com/lavas-project/jekyll-pwa).   
+It is pretty much the same, except for:
+- the starter process is initiated from a js file to allow for ```script-src: 'self';``` in your CSP, rather than inline.
+- serves `sw-register.js` minified for better auditing results.
 
 ---
 
-This plugin supports the PRE-RELEASE of **Workbox version 5.0.0** *.
-
-_* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._    
-
-There are various tools available on the [Workbox tools](https://developers.google.com/web/tools/workbox/) page, that let you easily generate a service worker with Webpack or Gulp as your build tool. 
-
-We do not use `npm` and therefore integrate this function in the Jekyll build process to precache and make posts/pages available offline, even if they have never been visited before. 
-
----
-
-## Prerequisites
-
-### Web App Manifest
-
-A `manifest.json` is required to experience the full features of your PWA.
-
-In case you do not have one already, please read the following about creating and adding a [manifest.json](https://developers.google.com/web/fundamentals/web-app-manifest/).
-Add it to the root directory of your project and Jekyll will deploy it to `_site` when your PWA / Website builds.    
-
-Use `Chrome DevTools > Application` for debugging/testing.
+Google has developed a series of tools, these are available on their [Workbox](https://developers.google.com/web/tools/workbox/) page.   
+If you use Webpack or Gulp as your build tool, you can easily generate a service worker with these tools. 
+As we do not want to use npm, we would like to precache and make posts and pages available offline, even if they have never been visited before. 
+Therefore we are integrating this function in the Jekyll build process.
+ 
+**IMPORTANT** This plugin supports Workbox version 3.x.x. If you are still using `v1.x.x`, you will have to migrate. 
+A migration guide is available [here](./MIGRATE.md).   
+The API of Workbox V3 has changed a lot compared to v2, some more powerful functions have been added too.
 
 
 ## Installation
@@ -49,7 +37,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 
 group :jekyll_plugins do
-  gem "jekyll-pwa-workbox", "~> 0.0.7.prerelease"
+  gem 'jekyll-pwa-workbox'
 end
 ```
 
@@ -60,7 +48,7 @@ Then run `bundle` to install the gem.
 Alternatively, you can also install the gem manually, using the following command:
 
 ```
-$ gem install jekyll-pwa-workbox --pre
+$ gem install jekyll-pwa-workbox
 ```
 
 Once the gem has been installed successfully, add the following to your `_config.yml` in order to tell Jekyll to use the plugin:
@@ -100,20 +88,35 @@ precache_glob_patterns    | Patterns of precache. [Workbox Config](https://devel
 precache_glob_ignores     | Ignores of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
 precache_recent_posts_num | Number of recent posts to precache.
 
-We handle precache and runtime cache with the help of [Workbox][workbox] in service worker.
+We handle precache and runtime cache with the help of Google Workbox in service worker.
+
+### Start the Service Worker
+
+Add the following js snippet to an existing js file:
+```javascript
+window.onload = function () {
+    var script = document.createElement('script');
+    var firstScript = document.getElementsByTagName('script')[0];
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '{{'sw-register.js'|relative_url}}?v=' + Date.now();
+    firstScript.parentNode.insertBefore(script, firstScript);
+};
+```
+
+OR use any of these files to start the service worker registration:
+- [pwa-1.0.js](./pwa-1.0.js)
+- [pwa-1.0.min.js](./pwa-1.0.min.js)
 
 
-## Service Worker
+### Write your own Service Worker
 
-### Write your own
+Create a `service-worker.js` in the root path of your Jekyll project.
+You can change the source file's path with `sw_src_filepath` option.
 
-Create a `service-worker.js` in the root path of your Jekyll project. The source file's path can be adjusted with the `sw_src_filepath` option.
+Now you can write your own Service Worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
 
-You can write your own service worker with [Workbox APIs](https://developers.google.com/web/tools/workbox/reference-docs/latest/).
-
-### Basic example
-
-Here is a basic example of [service-worker.js](./service-worker.js):
+Here's an exmaple of [service-worker.js](./service-worker.js) or create one yourself:
 ```javascript
 // service-worker.js
 
@@ -126,92 +129,51 @@ workbox.core.setCacheNameDetails({
 });
 
 // let Service Worker take control of pages ASAP
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
+workbox.skipWaiting();
+workbox.clientsClaim();
 
 // let Workbox handle our precache list
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// use `NetworkFirst` strategy for html
+// use `networkFirst` strategy for `*.html`, like all my posts
 workbox.routing.registerRoute(
     /\.html$/,
-    new workbox.strategies.NetworkFirst()
+    workbox.strategies.networkFirst()
 );
 
-// use `NetworkFirst` strategy for css and js
-workbox.routing.registerRoute(
-    /\.(?:js|css)$/,
-    new workbox.strategies.NetworkFirst()
-);
-
-// use `CacheFirst` strategy for images
+// use `cacheFirst` strategy for images
 workbox.routing.registerRoute(
     /assets\/(img|icons)/,
-    new workbox.strategies.CacheFirst()
+    workbox.strategies.cacheFirst()
 );
 
-// use `StaleWhileRevalidate` third party files
+// third party files
 workbox.routing.registerRoute(
     /^https?:\/\/cdn.staticfile.org/,
-    new workbox.strategies.StaleWhileRevalidate()
+    workbox.strategies.staleWhileRevalidate()
 );
 ```
 
+## Note
 
-## Register the Service Worker
+### Generate a manifest.json?
 
-Add the following two blocks to an existing JS file (i.e. app.js):    
+This plugin won't generate a [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Manifest). If you want to support this PWA feature, just add one in your root directory and Jekyll will copy it to `_site`.
 
-*this must be at the start of your JS file, before any other code, so that the script-src can be generated*
-```
----
-layout: null
----
-```
+### When my site updates...
 
+As the service worker has precached our assets such as `index.html`, JS files and other static files, we should notify user when our site has something changed. When these updates happen, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page so that these updates can be applied. A normal solution is showing a toast with the following text: `This site has changed, please refresh current page manually.`.
 
-*this snippet can live anywhere in your JS file (i.e. app.js)*
-```javascript
-window.onload = function () {
-    var script = document.createElement('script');
-    var firstScript = document.getElementsByTagName('script')[0];
-    script.async = true;
-    script.src = '{{'sw-register.js'|relative_url}}?v=' + Date.now();
-    firstScript.parentNode.insertBefore(script, firstScript);
-};
-```
+This plugin will dispatch a custom event called `sw.update` when the service worker has finished the update work. So in your site, you can choose to listen this event and popup a toast to remind users refreshing current page.
 
-OR use any of these files to start the service worker registration:
-- [pwa-1.0.js](./pwa-1.0.js)
-- [pwa-1.0.min.js](./pwa-1.0.min.js)
+# Contribute
 
+Fork this repository, make your changes and then issue a pull request. If you find bugs or have new ideas that you do not want to implement yourself, file a bug report.
 
-DONE - use `Chrome DevTools`for debugging/testing.
+# Copyright
 
----
+Copyright &copy; 2019 Pan Yuqi, sekiyika, souldanger
 
-## Notes
-
-### Updates / Manual Refresh
-
-When the PWA / Website updates, the service worker will go into the `install` stage and request the newest resources, but the user must refresh current page manually so that these updates can be applied. 
-This can be done by notifying the user with a toast such as `website updated - please refresh the page manually` or whatever else fits your needs.
-
-### Workbox Plugins
-
-Workbox also comes with a set of plugins, details of how to use these can be found in the [Workbox Guide - Using Plugins](https://developers.google.com/web/tools/workbox/guides/using-plugins)
-
-## Contribute
-
-Fork this repository, make your changes and then issue a pull request. If you find a bug or if you have new ideas, please file an issue in our [bug tracker](https://github.com/souldanger/jekyll-pwa-workbox/issues).
-
-## Copyright
-
-Copyright &copy; 2019 souldanger
-
-Copyright &copy; 2017 Pan Yuqi, Xing Peng
-
-License: [MIT](https://github.com/souldanger/jekyll-pwa-workbox/blob/master/LICENSE)
+License: MIT
 
 [ruby-gem]: https://rubygems.org/gems/jekyll-pwa-workbox
-[workbox]: https://developers.google.com/web/tools/workbox/

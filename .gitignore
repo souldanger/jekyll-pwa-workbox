@@ -1,3 +1,4 @@
+*.gem
 *.rbc
 /.config
 /coverage/
@@ -8,8 +9,6 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-.gitignore
-
 
 # Used by dotenv library to load environment variables.
 # .env
