@@ -33,7 +33,7 @@ In case you do not have one already, please read the following about creating an
 Add it to the root directory of your project and Jekyll will deploy it to `_site` when your PWA / Website builds.    
 
 Use `Chrome DevTools > Application` for debugging/testing.
-
+ 
 
 ## Installation
 
