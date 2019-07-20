@@ -2,6 +2,7 @@
 ![](https://ruby-gem-downloads-badge.herokuapp.com/jekyll-pwa-workbox?type=total)
 [![MIT license](http://img.shields.io/badge/license-MIT-orange.svg)](http://opensource.org/licenses/MIT)
 # Jekyll PWA Workbox Plugin
+- Pre-release
 
 A Jekyll plugin that makes your PWA / Website available offline and lets you install on desktop and mobile*.   
 It generates and injects a precache list into a [Workbox][workbox] service worker and handles the registration process in a secure way.   
@@ -13,7 +14,7 @@ The plugin was originally developed by [Lavas Project](https://github.com/lavas-
 
 ---
 
-This plugin supports the _ALPHA.1-RELEASE_ of **Workbox version 5.0.0** *.
+This plugin supports the _ALPHA.1_PRE-RELEASE_ of **Workbox version 5.0.0** *.
 
 _* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._    
 
