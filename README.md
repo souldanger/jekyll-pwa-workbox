@@ -49,7 +49,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 
 group :jekyll_plugins do
-  gem "jekyll-pwa-workbox", "~> 0.0.7.alpha1"
+  gem "jekyll-pwa-workbox", "~> 0.0.7.alpha"
 end
 ```
 
@@ -60,7 +60,7 @@ Then run `bundle` to install the gem.
 Alternatively, you can also install the gem manually, using the following command:
 
 ```
-$ gem install jekyll-pwa-workbox -v 0.0.7.alpha1 --pre
+$ gem install jekyll-pwa-workbox -v 0.0.7.alpha --pre
 ```
 
 Once the gem has been installed successfully, add the following to your `_config.yml` in order to tell Jekyll to use the plugin:
