@@ -38,8 +38,15 @@ upgrade library to Workbox version 4.3.1 - see fixes & updates [here](https://gi
 # 0.0.7.prerelease
 
 upgrade library to Workbox version 5.0.0-alpha.0 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.0.0-alpha.0) 
+
 ---
 
 # 0.0.7.alpha.1
 
 upgrade library to Workbox version 5.0.0-alpha.1 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.0.0-alpha.1) 
+
+---
+
+# 0.0.7
+
+upgrade library to Workbox version 5.0.0 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.0.0) 
