@@ -56,3 +56,9 @@ upgrade library to Workbox version 5.0.0 - see release notes [here](https://gith
 # 0.0.8
 
 upgrade library to Workbox version 5.1.1 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.1.1) 
+
+---
+
+# 0.0.9
+
+upgrade library to Workbox version 5.1.3 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.1.3) 

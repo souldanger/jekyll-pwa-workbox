@@ -13,7 +13,7 @@ The plugin was originally developed by [Lavas Project](https://github.com/lavas-
 
 ---
 
-This plugin supports **Workbox version 5.1.1** *.
+This plugin supports **Workbox version 5.1.3** *.
 
 _* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._    
 
@@ -49,7 +49,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 
 group :jekyll_plugins do
-  gem "jekyll-pwa-workbox", "~> 0.0.8"
+  gem "jekyll-pwa-workbox", "~> 0.0.9"
 end
 ```
 
@@ -60,7 +60,7 @@ Then run `bundle` to install the gem.
 Alternatively, you can also install the gem manually, using the following command:
 
 ```
-$ gem install jekyll-pwa-workbox -v 0.0.8
+$ gem install jekyll-pwa-workbox -v 0.0.9
 ```
 
 Once the gem has been installed successfully, add the following to your `_config.yml` in order to tell Jekyll to use the plugin:
