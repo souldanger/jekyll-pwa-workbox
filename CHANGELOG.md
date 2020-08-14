@@ -62,3 +62,9 @@ upgrade library to Workbox version 5.1.1 - see release notes [here](https://gith
 # 0.0.9
 
 upgrade library to Workbox version 5.1.3 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.1.3) 
+
+---
+
+# 0.0.91
+
+fixed deprecated JS (initEvent) in sw-regiser.js

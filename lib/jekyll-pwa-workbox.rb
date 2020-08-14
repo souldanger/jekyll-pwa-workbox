@@ -13,7 +13,7 @@ class SWHelper
         # add build version in url params
         sw_register_file.puts(
         <<-SCRIPT
-"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var t=e.installing;t.onstatechange=function(){switch(t.state){case"installed":if(navigator.serviceWorker.controller){var e=document.createEvent("Event");e.initEvent("sw.update",!0,!0),window.dispatchEvent(e)}}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
+"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var t=e.installing;t.onstatechange=function(){switch(t.state){case"installed":if(navigator.serviceWorker.controller){var e=document.createEvent("Event");e.Event("sw.update",!0,!0),window.dispatchEvent(e)}}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
         SCRIPT
         )
         sw_register_file.close
