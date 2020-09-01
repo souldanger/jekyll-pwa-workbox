@@ -8,8 +8,8 @@ It generates and injects a precache list into a [Workbox][workbox] service worke
 _* does not fully work with iOS/Safari to date_
 
 The plugin was originally developed by [Lavas Project](https://github.com/lavas-project/jekyll-pwa). It is pretty much the same, except for:
-- the starter process is initiated from a js file to allow for ```script-src 'self';``` in your CSP, rather than ```unsafe-inline```.
-- serves `sw-register.js` minified.
+- for security reasons, the starter process is initiated from a js file to allow for ```script-src 'self'```, rather than ```unsafe-inline``` in your [Content Security Policy](https://content-security-policy.com/ "Content Security Policy reference").
+- serves a minified `sw-register.js`.
 
 ---
 
@@ -49,7 +49,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 
 group :jekyll_plugins do
-  gem "jekyll-pwa-workbox", "~> 0.0.9"
+  gem "jekyll-pwa-workbox"
 end
 ```
 
@@ -60,7 +60,7 @@ Then run `bundle` to install the gem.
 Alternatively, you can also install the gem manually, using the following command:
 
 ```
-$ gem install jekyll-pwa-workbox -v 0.0.9
+$ gem install jekyll-pwa-workbox
 ```
 
 Once the gem has been installed successfully, add the following to your `_config.yml` in order to tell Jekyll to use the plugin:
@@ -84,9 +84,9 @@ pwa:
   precache_glob_directory: / # Optional
   precache_glob_patterns: # Optional
     - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
-    - index.html
+    - "index.html"
   precache_glob_ignores: # Optional
-    - sw-register.js
+    - "sw-register.js"
     - "fonts/**/*"
 ```
 
@@ -120,7 +120,7 @@ Here is a basic example of [service-worker.js](./service-worker.js):
 // set names for both precache & runtime cache
 workbox.core.setCacheNameDetails({
     prefix: 'my-blog',
-    suffix: 'v1',
+    suffix: 'v1.0',
     precache: 'precache',
     runtime: 'runtime-cache'
 });
