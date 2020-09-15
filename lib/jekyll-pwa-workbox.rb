@@ -1,5 +1,5 @@
 class SWHelper
-    WORKBOX_VERSION = 'v5.1.3'
+    WORKBOX_VERSION = 'v5.1.4'
     def initialize(site, config)
         @site = site
         @config = config
@@ -12,9 +12,9 @@ class SWHelper
         sw_register_file = File.new(@site.in_dest_dir(sw_register_filename), 'w')
         # add build version in url params
         sw_register_file.puts(
-        <<-SCRIPT
-"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var t=e.installing;t.onstatechange=function(){switch(t.state){case"installed":if(navigator.serviceWorker.controller){var e=document.createEvent("Event");e.Event("sw.update",!0,!0),window.dispatchEvent(e)}}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
-        SCRIPT
+<<-SCRIPT
+"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var t=e.installing;t.onstatechange=function(){switch(t.state){case"installed":if(navigator.serviceWorker.controller){var e=document.createEvent("Event");e.initEvent("sw.update",!0,!0),window.dispatchEvent(e)}}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
+SCRIPT
         )
         sw_register_file.close
     end
@@ -22,7 +22,7 @@ class SWHelper
     def generate_workbox_precache()
         directory = @config['precache_glob_directory'] || '/'
         directory = @site.in_dest_dir(directory)
-        patterns = @config['precache_glob_patterns'] || ['**/*.{html,js,css,eot,svg,ttf,woff}']
+        patterns = @config['precache_glob_patterns'] || ['**/*.{html,js,css,ttf,woff}']
         ignores = @config['precache_glob_ignores'] || []
         recent_posts_num = @config['precache_recent_posts_num']
 
