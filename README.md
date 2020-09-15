@@ -3,6 +3,8 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-orange.svg)](http://opensource.org/licenses/MIT)
 # Jekyll PWA Workbox Plugin
 
+_note on future releases; we will be using the same version number as Workbox from here on._
+
 A Jekyll plugin that makes your PWA / Website available offline and lets you install on desktop and mobile*.   
 It generates and injects a precache list into a [Workbox][workbox] service worker and handles the registration process in a secure way.   
 _* does not fully work with iOS/Safari to date_
@@ -13,11 +15,11 @@ The plugin was originally developed by [Lavas Project](https://github.com/lavas-
 
 ---
 
-This plugin supports **Workbox version 5.1.3** *.
+This plugin supports **Workbox version 5.1.4** *.
 
 _* in case you have been using a previous Workbox version (i.e. 3 or older), please see migration instructions [here](https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v3)._    
 
-There are various tools available on the [Workbox tools](https://developers.google.com/web/tools/workbox/) page, that let you easily generate a service worker with Webpack or Gulp as your build tool. 
+There are various tools available on the [Workbox][workbox] tools page, that let you easily generate a service worker with Webpack or Gulp as your build tool. 
 
 We do not use `npm` and therefore integrate this function in the Jekyll build process to precache and make posts/pages available offline, even if they have never been visited before. 
 
@@ -77,14 +79,16 @@ plugins:
 Add the following configuration block to Jekyll's `_config.yml`:
 ```yaml
 pwa:
+  enabled: false # Optional - default is `true`
   sw_src_filepath: service-worker.js # Optional
   sw_dest_filename: service-worker.js # Optional
   dest_js_directory: assets/js # Required
   precache_recent_posts_num: 5 # Optional
   precache_glob_directory: / # Optional
   precache_glob_patterns: # Optional
-    - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
-    - "index.html"
+    - "/**/*.{js,json,css}"
+    - "/**/*.{ico,jpg,jpeg,png,svg}"
+    - "/**/*.html"
   precache_glob_ignores: # Optional
     - "sw-register.js"
     - "fonts/**/*"
@@ -92,6 +96,7 @@ pwa:
 
 Parameter                 | Description
 ----------                | ------------
+enabled                   | Let's you disable service worker registration. This maybe useful when running into issues during in your development environment. Default is `true`.
 sw_src_filepath           | Filepath of the source service worker. Defaults to `service-worker.js`
 sw_dest_filename          | Filename of the destination service worker. Defaults to `service-worker.js`
 dest_js_directory         | Directory of JS in `_site`. During the build process, some JS like workbox.js will be copied to this directory so that service worker can import them in runtime.

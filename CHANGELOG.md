@@ -68,3 +68,9 @@ upgrade library to Workbox version 5.1.3 - see release notes [here](https://gith
 # 0.0.91
 
 fixed deprecated JS (initEvent) in sw-regiser.js
+
+---
+
+# 5.1.4
+
+we're using fixed deprecated JS (initEvent) in sw-regiser.js
