@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-pwa-workbox'
-  s.version     = '5.1.4'
-  s.date        = '2020-09-15'
+  s.version     = '5.1.41'
+  s.date        = '2021-01-03'
   s.summary     = "PWA Workbox Service Worker for Jekyll."
   s.description = "A Jekyll plugin that makes your PWA / Website available offline and lets you install on desktop and mobile. 
 					It generates and injects a precache list into a Workbox v5.1.4 service worker and handles the registration process in a secure way."
