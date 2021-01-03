@@ -73,4 +73,10 @@ fixed deprecated JS (initEvent) in sw-regiser.js
 
 # 5.1.4
 
-we're using fixed deprecated JS (initEvent) in sw-regiser.js
+upgrade library to Workbox version 5.1.4 - see release notes [here](https://github.com/GoogleChrome/workbox/releases/tag/v5.1.4)
+
+---
+
+# 5.1.4-1
+
+fixed deprecated JS (initEvent) in sw-regiser.js
