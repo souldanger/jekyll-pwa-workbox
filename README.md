@@ -81,6 +81,7 @@ Add the following configuration block to Jekyll's `_config.yml`:
 pwa:
   sw_src_filepath: service-worker.js # Optional
   sw_dest_filename: service-worker.js # Optional
+  sw_scope: / #optional
   dest_js_directory: assets/js # Required
   precache_recent_posts_num: 5 # Optional
   precache_glob_directory: / # Optional
@@ -97,6 +98,7 @@ Parameter                 | Description
 ----------                | ------------
 sw_src_filepath           | Filepath of the source service worker. Defaults to `service-worker.js`
 sw_dest_filename          | Filename of the destination service worker. Defaults to `service-worker.js`
+sw_scope                  | Service worker's registration scope; that is, what range of URLs a service worker can control [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
 dest_js_directory         | Directory of JS in `_site`. During the build process, some JS like workbox.js will be copied to this directory so that service worker can import them in runtime.
 precache_glob_directory   | Directory of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)
 precache_glob_patterns    | Patterns of precache. [Workbox Config](https://developers.google.com/web/tools/workbox/get-started/webpack#optional-config)

@@ -5,15 +5,22 @@ class SWHelper
         @config = config
         @sw_filename = @config['sw_dest_filename'] || 'service-worker.js'
         @sw_src_filepath = @config['sw_src_filepath'] || 'service-worker.js'
+        @sw_scope = @config['sw_scope'] || nil
     end
 
     def write_sw_register()
         sw_register_filename = 'sw-register.js'
         sw_register_file = File.new(@site.in_dest_dir(sw_register_filename), 'w')
+
+        register_options = ''
+        if @sw_scope
+            register_options = ",{scope:'#{@swscope}'}"
+        end
+
         # add build version in url params
         sw_register_file.puts(
 <<-SCRIPT
-"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}").then(function(e){e.onupdatefound=function(){var r=e.installing;r.onstatechange=function(){switch(r.state){case"installed":var e;navigator.serviceWorker.controller&&(e=new Event("sw.update"),window.dispatchEvent(e))}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
+"serviceWorker"in navigator&&navigator.serviceWorker.register("#{@site.baseurl.to_s}/#{@sw_filename}?v=#{@site.time.to_i.to_s}#{register_options}").then(function(e){e.onupdatefound=function(){var r=e.installing;r.onstatechange=function(){switch(r.state){case"installed":var e;navigator.serviceWorker.controller&&(e=new Event("sw.update"),window.dispatchEvent(e))}}}}).catch(function(e){console.error("Error during service worker registration:",e)});
 SCRIPT
         )
         sw_register_file.close
